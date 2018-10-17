@@ -42,8 +42,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopNav />
-        <SideMenu venues={this.state.venues}/>
+        <TopNav toggle={this.toggle}/>
+        <SideMenu openMenu={this.state.openMenu} venues={this.state.venues}/>
         <Map {...this.state}/>
       </div>
     );
