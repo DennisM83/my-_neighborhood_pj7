@@ -14,12 +14,35 @@ class App extends Component {
     openMenu: true
   }
 
+  /* open and closes the side menu */
   toggle = () => {
     this.setState(state =>({
       openMenu: !state.openMenu
     }))
   }
 
+  markerClose = () => {
+    let markers = this.state.markers.map(marker => {
+      marker.isOpen = false;
+      return marker;
+    })
+    this.setState({ markers: Object.assign(this.state.markers, markers )})
+  }
+
+/*handles the infowindow when marker is clicked on map */
+  markerClick = (marker) => {
+    this.markerClose()
+    marker.isOpen = true;
+    this.setState({
+      markers: Object.assign(this.state.markers, marker)
+    });
+    let venue = this.state.venues.find(venue => venue.id === marker.id)
+    SquareAPI.getVenueDetails(marker.id).then(res => {
+      let fresh = Object.assign(venue, res.response.venue);
+    })
+  }
+
+/* searches the FoursquareAPI and returns the information from the server */
   componentDidMount() {
     SquareAPI.search({
       ll: "28.688239,-81.399993",
@@ -32,7 +55,8 @@ class App extends Component {
           lat: venue.location.lat,
           lng: venue.location.lng,
           isOpen: false,
-          isVisible: true
+          isVisible: true,
+          id: venue.id
         }
       });
       this.setState({ venues, markers })
@@ -44,7 +68,7 @@ class App extends Component {
       <div className="App">
         <TopNav toggle={this.toggle}/>
         <SideMenu openMenu={this.state.openMenu} venues={this.state.venues}/>
-        <Map {...this.state}/>
+        <Map {...this.state} markerClick={this.markerClick}/>
       </div>
     );
   }

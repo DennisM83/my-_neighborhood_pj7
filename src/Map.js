@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 
 
 /*From Tom Chen @ https://tomchentw.github.io/react-google-maps/ */
@@ -10,15 +10,23 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
             {   lat: 28.688239, lng: -81.399993 }}
         >
         { /*written by Forrest Walker - https://www.youtube.com/watch?v=cJ3sAG2Ybq4&index=4&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP */}
-        {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, index) => (
-            <Marker key={index} position = {{ lat: marker.lat, lng: marker.lng }}/>
-        ))
+        {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, index) => {
+            let venueInfo =  props.venues.find(venue => venue.id === marker.id)
+           return <Marker key={index} position = {{ lat: marker.lat, lng: marker.lng }} defaultAnimation={window.google.maps.Animation.DROP} onClick={() => props.markerClick(marker)}>
+                {marker.isOpen && (
+                <InfoWindow>
+                    <div>
+                        <p>{venueInfo.name}</p>
+                        <p>{venueInfo.location.address}</p>
+                    </div></InfoWindow>)}
+            </Marker>
+        })
         }
         </GoogleMap>
 ))
 
 window.gm_authFailure = () => {
-    alert('Oops! looks like something went wrong!')
+    alert('Oops! looks like something went wrong loading the map')
 };
 
 class Map extends Component {

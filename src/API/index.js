@@ -41,7 +41,7 @@ class Helper {
             urlPrams
         )}`,
         requestData
-        ).then(res => res.json()).catch(err => console.log(err))
+        ).then(res => res.json()).catch(() => alert('Oops! looks like something went wrong finding locations'))
     }
 }
 export default class SquareAPI {

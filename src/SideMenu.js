@@ -15,12 +15,9 @@ class SideMenu extends Component {
         })
     }
 
-    componentDidUpdate() {
-        console.log(this.props.venues)
-    }
-
     render() {
-
+        
+        /* filters through the venue names and checks to see if any characters match the venue names */
         let restaurants;
         let match;
         if(this.state.query) {
@@ -40,6 +37,7 @@ class SideMenu extends Component {
                         <form className="form-inline align-items-center col-auto">
                             <input className="form-control mr-sm-1" type="search" placeholder="filter" value={this.state.query} onChange={(event) => {this.reviseQuery(event.target.value)}} aria-label="filter"/>
                             <ul className="list-unstyled">
+                            {/* dynamically renders the list-items based on the venue ID and name */}
                                 {restaurants.map((element) => {
                                     return <li key={element.id}>{element.name}</li>
                                 })}
