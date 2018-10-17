@@ -2,3 +2,28 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/******* Top Nav **********/
+
+#topbar {
+    color: #F9F9F9;
+    display: flex;
+    width: 100%;
+}
+
+/******* Side Menu *******/
+
+#navMenu {
+    opacity: 0.9;
+    display: flex;
+    color: #F9F9F9;
+    flex-flow: column;
+    max-width: 250px;
+    float: left;
+    margin: 0;
+    height: 100vh;
+    overflow: scroll;
+}
+
+
+
