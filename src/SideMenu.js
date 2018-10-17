@@ -15,9 +15,22 @@ class SideMenu extends Component {
         })
     }
 
+    componentDidUpdate() {
+        console.log(this.props.venues)
+    }
+
     render() {
+
         let restaurants;
-        let match; 
+        let match;
+        if(this.state.query) {
+            match = new RegExp(escapeRegExp(this.state.query), 'i')
+            restaurants = this.props.venues.filter(element => 
+                match.test(element.name)
+            )} else {
+                restaurants = this.props.venues
+            }
+
         return (
             <div className="sideMenu">
                 <nav className="navbar navbar-dark bg-dark" id="navMenu">
@@ -26,7 +39,9 @@ class SideMenu extends Component {
                     <form className="form-inline align-items-center col-auto">
                         <input className="form-control mr-sm-1" type="search" placeholder="filter" aria-label="filter"/>
                         <ul className="list-unstyled">
-                        
+                            {restaurants.map((element) => {
+                                return <li key={element.id}>{element.name}</li>
+                            })}
                         </ul>
                     </form>
                     </span>

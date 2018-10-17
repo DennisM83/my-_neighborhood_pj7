@@ -23,7 +23,7 @@ class App extends Component {
   componentDidMount() {
     SquareAPI.search({
       ll: "28.688239,-81.399993",
-      query: "food",
+      query: "restaurant",
       limit: 10
     }).then(theVenues => {
       let { venues } = theVenues.response;
@@ -43,7 +43,7 @@ class App extends Component {
     return (
       <div className="App">
         <TopNav />
-        <SideMenu/>
+        <SideMenu venues={this.state.venues}/>
         <Map {...this.state}/>
       </div>
     );
