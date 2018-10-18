@@ -42,11 +42,11 @@ class App extends Component {
       this.setState({ venues: Object.assign(this.state.venues, fresh )})
     })
   }
-
+  
+/* allows the list items on the sidebar menu to correspond to the markers on the map */
   sideBarClick = venue => {
-    let marker = this.state.markers.find(marker => marker.id === venue.id)
+    let marker = this.state.markers.find(element => element.id === venue.id);
     this.markerClick(marker)
-    console.log(venue)
   }
 
 /* searches the FoursquareAPI and returns the information from the server */

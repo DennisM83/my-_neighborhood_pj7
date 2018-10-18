@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Style.css';
 import escapeRegExp from 'escape-string-regexp';
+import VenueList from './VenueList.js'
 
 class SideMenu extends Component {
     /* this sets the query for the filter */
@@ -37,12 +38,16 @@ class SideMenu extends Component {
                         Local Eats
                         {/* the filter for the list items */}
                         <form className="form-inline align-items-center col-auto">
-                            <input className="form-control mr-sm-1" type="search" placeholder="filter" value={this.state.query} onChange={(event) => {this.reviseQuery(event.target.value)}} aria-label="filter"/>
+                            <input className="form-control mr-sm-1" type="search" placeholder="Filter Restaurants" value={this.state.query} onChange={(event) => {this.reviseQuery(event.target.value)}} aria-label="filter"/>
                             <ul className="list-unstyled">
                             {/* dynamically renders the list-items based on the venue ID and name */}
-                                {this.props.venues && restaurants.map((element) => {
-                                    return <li key={element.id} onClick={() => this.props.sideBarClick(this.props.venues.map(venue => venue.id))}>{element.name}</li>
-                                })}
+                                {this.props.venues && restaurants.map((element, index) => (
+                                   <VenueList
+                                    key={index}
+                                    {...element}
+                                    sideBarClick={this.props.sideBarClick}
+                                   /> 
+                                ))}
                             </ul>
                         </form>
                         </span>
