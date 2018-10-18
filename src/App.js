@@ -11,7 +11,10 @@ class App extends Component {
   state = {
     venues: [],
     markers: [],
-    openMenu: true
+    openMenu: true,
+    updateToTheState: element => {
+      this.setState(element)
+    }
   }
 
   /* open and closes the side menu */
@@ -42,7 +45,7 @@ class App extends Component {
       this.setState({ venues: Object.assign(this.state.venues, fresh )})
     })
   }
-  
+
 /* allows the list items on the sidebar menu to correspond to the markers on the map */
   sideBarClick = venue => {
     let marker = this.state.markers.find(element => element.id === venue.id);
