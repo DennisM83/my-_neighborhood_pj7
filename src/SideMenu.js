@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import './Style.css';
-import escapeRegExp from 'escape-string-regexp';
-import VenueList from './VenueList.js'
+import TheList from './TheList.js'
 
 class SideMenu extends Component {
     /* this sets the query for the filter */
     state = {
-        query: ''
+        query: '',
+        restaurants: []
     }
-
+    
+/* filters through the list of restaurants and returns the names on the side menu */
     filterTheVenues = () => {
-
+        if(this.state.query.trim() !== "") {
+            let restaurants = this.props.venues.filter(venue => venue.name.toLowerCase().includes(this.state.query.toLowerCase()))
+            return restaurants
+        }
+        return this.props.venues
     }
 
     /*this updates the query when the user enters in a character */
@@ -18,6 +23,7 @@ class SideMenu extends Component {
         this.setState({
             query: event.target.value
         })
+        
         let markers = this.props.venues.map(venue => {
             let doesMatch = venue.name.toLowerCase().includes(event.target.value.toLowerCase())
             let marker = this.props.markers.find(element => element.id === venue.id);
@@ -28,22 +34,10 @@ class SideMenu extends Component {
             }
             return marker;
         });
-        this.props.updateToTheState(markers)
+        this.props.updateToTheState({markers})
     }
 
     render() {
-        
-        /* filters through the venue names and checks to see if any characters match the venue names */
-        /*let restaurants;
-        let match;
-        if(this.state.query) {
-            match = new RegExp(escapeRegExp(this.state.query), 'i')
-            restaurants = this.props.venues.filter(element => 
-                match.test(element.name)
-            )} else {
-                restaurants = this.props.venues
-            }*/
-
         return (
             <div className="sideMenu">
             {/* checks the toggle open and close */}
@@ -54,16 +48,11 @@ class SideMenu extends Component {
                         {/* the filter for the list items */}
                         <form className="form-inline align-items-center col-auto">
                             <input className="form-control mr-sm-1" type="search" placeholder="Filter Restaurants" value={this.state.query} onChange={this.reviseQuery} aria-label="filter"/>
-                            <ul className="list-unstyled">
-                            {/* dynamically renders the list-items based on the venue ID and name */}
-                                {this.props.venues && this.props.venues.map((element, index) => (
-                                   <VenueList
-                                    key={index}
-                                    {...element}
-                                    sideBarClick={this.props.sideBarClick}
-                                   /> 
-                                ))}
-                            </ul>
+                            <TheList 
+                                {...this.props}
+                                venues={this.filterTheVenues()}
+                                sideBarClick={this.props.sideBarClick}
+                            />
                         </form>
                         </span>
                     </nav>
