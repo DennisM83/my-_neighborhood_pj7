@@ -32,8 +32,10 @@ body {
 }
 
 ul > li {
-    padding: 25px 0 25px 0;
+    padding: 15px 0 15px 0;
     cursor: pointer;
+    border: 1px #F9F9F9 solid;
+    border-radius: 15px;
 }
 
 
