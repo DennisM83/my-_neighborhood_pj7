@@ -40,8 +40,8 @@ class SideMenu extends Component {
                             <input className="form-control mr-sm-1" type="search" placeholder="filter" value={this.state.query} onChange={(event) => {this.reviseQuery(event.target.value)}} aria-label="filter"/>
                             <ul className="list-unstyled">
                             {/* dynamically renders the list-items based on the venue ID and name */}
-                                {restaurants.map((element) => {
-                                    return <li key={element.id}>{element.name}</li>
+                                {this.props.venues && restaurants.map((element) => {
+                                    return <li key={element.id} onClick={() => this.props.sideBarClick(this.props.venues.map(venue => venue.id))}>{element.name}</li>
                                 })}
                             </ul>
                         </form>

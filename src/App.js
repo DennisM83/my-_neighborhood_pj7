@@ -38,8 +38,15 @@ class App extends Component {
     });
     let venue = this.state.venues.find(venue => venue.id === marker.id)
     SquareAPI.getVenueDetails(marker.id).then(res => {
-      let fresh = Object.assign(venue, res.response.venue);
+      let fresh = Object.assign(venue, res.response.venue)
+      this.setState({ venues: Object.assign(this.state.venues, fresh )})
     })
+  }
+
+  sideBarClick = venue => {
+    let marker = this.state.markers.find(marker => marker.id === venue.id)
+    this.markerClick(marker)
+    console.log(venue)
   }
 
 /* searches the FoursquareAPI and returns the information from the server */
@@ -67,7 +74,7 @@ class App extends Component {
     return (
       <div className="App">
         <TopNav toggle={this.toggle}/>
-        <SideMenu openMenu={this.state.openMenu} venues={this.state.venues}/>
+        <SideMenu openMenu={this.state.openMenu} {...this.state} sideBarClick={this.sideBarClick}/>
         <Map {...this.state} markerClick={this.markerClick}/>
       </div>
     );
