@@ -1,11 +1,12 @@
 /* written by Forrest Walker - https://www.youtube.com/watch?v=Dj5hzKBxCBI&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP&index=3 */
+/* Using Foursquare API https://developer.foursquare.com/ */
 class Helper {
     static baseURL() {
         /*this establishes the base address for Foursquare*/
         return "https://api.foursquare.com/v2";
     }
     static auth() {
-        /*authentication for our Foursqaure request*/
+        /*authentication for our Foursquare API request*/
         const keys = {
             client_id: "DE1DKNEUOSEUI2FOQT2MFCSGQYSWR2VCCK5BXXLBIWVRYAFR",
             client_secret: "ON5Y30V0RI0PCHPYOZJAFGY4YVP4SVYRKGDYIOY20PX1AOTD",

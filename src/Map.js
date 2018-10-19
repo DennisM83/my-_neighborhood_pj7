@@ -8,13 +8,28 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
             defaultZoom = { 10 }
             defaultCenter = {
             {   lat: 28.688239, lng: -81.399993 }}
+            
         >
         { /*written by Forrest Walker - https://www.youtube.com/watch?v=cJ3sAG2Ybq4&index=4&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP */}
         {props.markers && props.markers.filter(marker => marker.isVisible).map((marker, index) => {
             /* compares the ids between the venue and the current marker */
             let venueInfo =  props.venues.find(venue => venue.id === marker.id)
             /* renders markers dynamically */
-           return <Marker key={index} position = {{ lat: marker.lat, lng: marker.lng }} defaultAnimation={window.google.maps.Animation.DROP} onClick={() => props.markerClick(marker)}>
+           return <Marker key = {
+               index
+           }
+           position = {
+               {
+                   lat: marker.lat,
+                   lng: marker.lng
+               }
+           }
+           animation = {
+               window.google.maps.Animation.DROP
+           }
+           onClick = {
+               () => props.markerClick(marker)
+           } >
                 {marker.isOpen && (
                     /* the info window to display the name of the establishment and the address */
                 <InfoWindow>

@@ -8,7 +8,7 @@ class SideMenu extends Component {
         query: '',
         restaurants: []
     }
-    
+
 /* filters through the list of restaurants and returns the names on the side menu */
     filterTheVenues = () => {
         if(this.state.query.trim() !== "") {
@@ -39,7 +39,7 @@ class SideMenu extends Component {
 
     render() {
         return (
-            <div className="sideMenu">
+            <div className="sideMenu" role="listitem" tabindex="1">
             {/* checks the toggle open and close */}
                 {this.props.openMenu &&
                     <nav className="navbar navbar-dark bg-dark" id="navMenu">
