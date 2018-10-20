@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Map from './Map.js'
 import './App.css';
 import './Style.css'
-import SquareAPI from './API/';
+import SquareAPI from './FourAPI.js';
 import TopNav from './TopNav.js'
 import SideMenu from './SideMenu.js'
 
@@ -50,8 +50,14 @@ class App extends Component {
   sideBarClick = venue => {
     let marker = this.state.markers.find(element => element.id === venue.id);
     this.markerClick(marker)
+    this.markerBounce(marker)
   }
 
+  markerBounce = (marker) => {
+    marker.setAnimation(window.google.maps.Animation.BOUNCE)
+  }
+
+  
 /* searches the FoursquareAPI and returns the information from the server */
   componentDidMount() {
     SquareAPI.search({
@@ -78,7 +84,7 @@ class App extends Component {
       <div className="App">
         <TopNav toggle={this.toggle}/>
         <SideMenu openMenu={this.state.openMenu} {...this.state} sideBarClick={this.sideBarClick}/>
-        <Map {...this.state} markerClick={this.markerClick}/>
+        <Map {...this.state} markerClick={this.markerClick} markerBounce={this.markerBounce}/>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import './Style.css'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
-
 
 /*From Tom Chen @ https://tomchentw.github.io/react-google-maps/ */
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
@@ -24,6 +24,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
                    lng: marker.lng
                }
            }
+           onChange={() => props.markerBounce()}
            animation = {
                window.google.maps.Animation.DROP
            }
@@ -36,6 +37,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
                     <div>
                         <p>{venueInfo.name}</p>
                         <p>{venueInfo.location.address}</p>
+                        <p id="fourInfo">info provided by <span id="fourTitle">Foursquare</span></p>
                     </div>
                 </InfoWindow>)}
             </Marker>

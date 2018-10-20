@@ -33,12 +33,11 @@ information on name and location of the restaurant.
 * Forrest Walker -  https://www.youtube.com/watch?v=Dj5hzKBxCBI&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP&index=3
 * Tom Chen - https://tomchentw.github.io/react-google-maps/
 * Dennis Wenrich 
-    * Download / clone respository at `https://github.com/DennisM83/reactnd-project-myreads-starter/`
+    * Download / clone respository at `https://github.com/DennisM83/my-_neighborhood_pj7/`
     * Open Node.js terminal
     * 'cd' into the file 
     * install all project dependencies with `npm install`
     * start the development server with `npm run build`
-    * then `serve -s build`
     * navigate to `localhost: 5000`
 
 #License 

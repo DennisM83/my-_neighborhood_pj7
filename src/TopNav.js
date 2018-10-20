@@ -7,7 +7,7 @@ const TopNav = (props) => {
             <nav className="navbar navbar-expanded-lg navbar-dark bg-dark" id="topbar">
                 <div className="text-center container-fluid">
                     Neighborhood Map
-                    <div className="col-xs-2" tabindex="0">
+                    <div className="col-xs-2" tabIndex="0">
                         <ToggleBtn toggle={props.toggle}/>
                     </div>
                 </div>

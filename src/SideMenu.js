@@ -39,7 +39,7 @@ class SideMenu extends Component {
 
     render() {
         return (
-            <div className="sideMenu" role="listitem" tabindex="1">
+            <div className="sideMenu" role="listitem" tabIndex="1">
             {/* checks the toggle open and close */}
                 {this.props.openMenu &&
                     <nav className="navbar navbar-dark bg-dark" id="navMenu">
