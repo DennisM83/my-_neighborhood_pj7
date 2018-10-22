@@ -24,7 +24,6 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
                    lng: marker.lng
                }
            }
-           onChange={() => props.markerBounce()}
            animation = {
                window.google.maps.Animation.DROP
            }

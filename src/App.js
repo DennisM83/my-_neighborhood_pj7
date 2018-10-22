@@ -50,13 +50,7 @@ class App extends Component {
   sideBarClick = venue => {
     let marker = this.state.markers.find(element => element.id === venue.id);
     this.markerClick(marker)
-    this.markerBounce(marker)
-  }
-
-  markerBounce = (marker) => {
-    marker.setAnimation(window.google.maps.Animation.BOUNCE)
-  }
-
+}
   
 /* searches the FoursquareAPI and returns the information from the server */
   componentDidMount() {
