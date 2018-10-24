@@ -5,6 +5,7 @@ import './Style.css'
 import SquareAPI from './FourAPI.js';
 import TopNav from './TopNav.js'
 import SideMenu from './SideMenu.js'
+import MapTwo from './Map2.js'
 
 class App extends Component {
 
@@ -78,7 +79,7 @@ class App extends Component {
       <div className="App">
         <TopNav toggle={this.toggle}/>
         <SideMenu openMenu={this.state.openMenu} {...this.state} sideBarClick={this.sideBarClick}/>
-        <Map {...this.state} markerClick={this.markerClick} markerBounce={this.markerBounce}/>
+        <Map {...this.state} markerClick={this.markerClick}/>
       </div>
     );
   }

@@ -8,6 +8,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
             defaultZoom = { 10 }
             defaultCenter = {
             {   lat: 28.688239, lng: -81.399993 }}
+            defaultAnimation = {2}
             
         >
         { /*written by Forrest Walker - https://www.youtube.com/watch?v=cJ3sAG2Ybq4&index=4&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP */}
@@ -25,7 +26,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
                }
            }
            animation = {
-               window.google.maps.Animation.DROP
+               marker.isOpen === true ? 1 : 2
            }
            onClick = {
                () => props.markerClick(marker)
@@ -45,12 +46,15 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
         </GoogleMap>
 ))
 
-/* error handler for the map in case of failure*/
-window.gm_authFailure = () => {
-    alert('Oops! looks like something went wrong loading the map')
-};
-
 class Map extends Component {
+
+    componentDidUpdate() {
+        /* error handler for the map in case of failure*/
+        window.gm_authFailure = () => {
+            alert('Oops! looks like something went wrong loading the map')
+        };
+    }
+
     render() {
         return(
             <MyMapComponent
@@ -58,7 +62,7 @@ class Map extends Component {
                 {...this.props}
                 isMarkerShown
             /* the url to render GOOGLE MAPS */
-                googleMapURL = "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAbs0suPVRKY8V7nXTVVjoWeVZYJjxqQNU"
+                googleMapURL =  "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAbs0suPVRKY8V7nXTVVjoWeVZYJjxqQNU"
                 loadingElement = { <div style = {{ height: `100%` }}/>}
                 containerElement = { <div style = {{ height: `400px` }}/>}
             /* sets the relative total height of the window */
