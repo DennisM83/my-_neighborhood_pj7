@@ -12,7 +12,7 @@ class Error extends Component {
     }
 
     componentDidCatch(error, info) {
-        alert('Oops! looks like something went wrong loading the map!', error, info)
+        alert('Oops! looks like something went wrong loading the map!' + error)
     }
     render() {
         if (this.setState.hasAnError) {
