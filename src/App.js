@@ -4,8 +4,7 @@ import './App.css';
 import './Style.css'
 import SquareAPI from './FourAPI.js';
 import TopNav from './TopNav.js'
-import SideMenu from './SideMenu.js'
-import MapTwo from './Map2.js'
+import SideMenu from './SideMenu.js';
 
 class App extends Component {
 

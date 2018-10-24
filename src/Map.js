@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Style.css'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
+import Error from './ErrorBound.js';
 
 /*From Tom Chen @ https://tomchentw.github.io/react-google-maps/ */
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
@@ -57,6 +58,7 @@ class Map extends Component {
 
     render() {
         return(
+            <Error {...this.props}>
             <MyMapComponent
             /* spread operator for the array props */
                 {...this.props}
@@ -69,6 +71,7 @@ class Map extends Component {
                 mapElement = {<div style = {{ height: `100vh` }}/>}
                 role="application" 
             />
+            </Error>
         )
     }
 }
