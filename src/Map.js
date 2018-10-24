@@ -59,18 +59,18 @@ class Map extends Component {
     render() {
         return(
             <Error {...this.props}>
-            <MyMapComponent
-            /* spread operator for the array props */
-                {...this.props}
-                isMarkerShown
-            /* the url to render GOOGLE MAPS */
-                googleMapURL =  "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAbs0suPVRKY8V7nXTVVjoWeVZYJjxqQNU"
-                loadingElement = { <div style = {{ height: `100%` }}/>}
-                containerElement = { <div style = {{ height: `400px` }}/>}
-            /* sets the relative total height of the window */
-                mapElement = {<div style = {{ height: `100vh` }}/>}
-                role="application" 
-            />
+                <MyMapComponent
+                /* spread operator for the array props */
+                    {...this.props}
+                    isMarkerShown
+                /* the url to render GOOGLE MAPS */
+                    googleMapURL =  "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAbs0suPVRKY8V7nXTVVjoWeVZYJjxqQNU"
+                    loadingElement = { <div style = {{ height: `100%` }}/>}
+                    containerElement = { <div style = {{ height: `400px` }}/>}
+                /* sets the relative total height of the window */
+                    mapElement = {<div style = {{ height: `100vh` }}/>}
+                    role="application" 
+                />
             </Error>
         )
     }

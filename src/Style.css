@@ -49,3 +49,8 @@ ul > li {
 #fourTitle {
     color: #E83766;
 }
+
+#errorMess {
+    padding-top: 150px;
+    color: #000;
+}
