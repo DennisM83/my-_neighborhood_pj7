@@ -37,8 +37,9 @@ information on name and location of the restaurant.
     * Open Node.js terminal
     * 'cd' into the file 
     * install all project dependencies with `npm install`
-    * start the development server with `npm run build`
-    * navigate to `localhost: 5000`
+    * start the development server with `npm start`
+    * navigate to `localhost: 3000`
+    *** NOTE: Service Worker is registered and only works in Production mode ***
 
 #License 
 
